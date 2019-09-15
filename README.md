@@ -43,3 +43,14 @@ Kafka guarantees that all messages inside a partition are ordered in the sequenc
 Kafka does not keep track of what records are read by the consumer and delete them but rather stores them a set amount of time or until some size threshold is met. Consumers themselves poll Kafka for new messages and say what records they want to read. This allows them to increment/decrement the offset they’re at as they wish, thus being able to replay and reprocess events.It is worth noting that consumers are actually [consumer groups](https://blog.cloudera.com/scalability-of-kafka-messaging-using-consumer-groups/) which have one or more consumer processes inside. In order to avoid two processes reading the same message twice, each partition is tied to only one consumer process per group.
 
 ![kafka](https://user-images.githubusercontent.com/36330171/64907522-f0224a00-d708-11e9-9a5d-bd5065d883f1.png)
+
+## kafka Monitoring
+ Kafka has grown considerably in terms of both volume and complexity, and being a crucial component in the IT infrastructure, it's necessary to implement a dedicated kafka monitor to track its operations and performance. Kafka monitoring tools like Applications Manager's Kafka monitoring tool collects all performance metrics that can help when troubleshooting Kafka issues, and it shows you which ones require corrective action.
+ #### Important Kafka performance metrics to look for while performing Kafka monitoring include:
+1. Resource utilization metrics
+2. Kafka broker metrics
+3. Kafka producer metrics
+4. Kafka consumer metrics
+you must automatically discover and monitor Kafka servers and track resource utilization details, such as memory, CPU, and disk growth, over time; this will ensure that you don't run out of resources.
+#### threads and JVM usage
+Because it runs in the Java Virtual Machine (JVM), Kafka relies on Java garbage collection processes to free up memory. The more activity in your Kafka cluster, the more often the garbage collection will run.
