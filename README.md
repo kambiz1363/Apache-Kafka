@@ -8,8 +8,10 @@ Zookeeper is a software project from the Apache Software Foundation that provide
 * Zookeeper is used for:
 1. #### Collector ellection :
 Zookeeper is the storage of the state of a Kafka cluster. It is used for the controller election either in the very beginning or when the current controller crashes. The controller is also responsible for telling other replicas to become partition leaders when the partition leader broker of a topic fails/crashes.
+
 2. #### Configuration of Topics :
 which topics exist, how many partitions each has, where are the replicas, who is the preferred leader, what configuration overrides are set for each topic.
+
 3. #### Quotas and Access control list :
 How much data is each client allowed to read and write and Who is allowed to read and write to which topic.
 ### How does it work?
