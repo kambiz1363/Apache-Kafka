@@ -2,6 +2,7 @@
 ### What Is Kafka?
 It is generally used as a publish/subscribe messaging system, It allows us to publish and subscribe to a stream of records that can be categorized. Kafka is written in Java. It is often used in real-time streaming data architectures to provide real-time analytics.<p> Since Kafka is a fast, scalable, durable, and *fault-tolerant publish-subscribe messaging system*.</p>
 ### kafka architecture
+Kafka has four core APIs:
 Producer API: This API enables the source or sender system to send data to the topics in Kafka cluster.
 
 Consumer API: This API enables the receiving or consuming application to consume the data from Kafka cluster.
