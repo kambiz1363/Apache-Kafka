@@ -2,7 +2,17 @@
 ### What Is Kafka?
 It is generally used as a publish/subscribe messaging system, It allows us to publish and subscribe to a stream of records that can be categorized. Kafka is written in Java. It is often used in real-time streaming data architectures to provide real-time analytics.<p> Since Kafka is a fast, scalable, durable, and *fault-tolerant publish-subscribe messaging system*.</p>
 ### kafka architecture
-kafka consists of cluster, storage, log and so producer and consumer data. It is distributed store, receives and send records on different nodes that called *brokers*.  Brokers receive records from producers, assigns offsets to them, and commits them to storage. For this reason it needed Zookeeper.
+Producer API – This API enables the source or sender system to send data to the topics in Kafka cluster.
+
+Consumer API – This API enables the receiving or consuming application to consume the data from Kafka cluster.
+
+Streams API – This API enables transformation of incoming data; transformation may be simple mapping, filtering, aggregation etc.
+
+Kafka Connect Source API – When we have very similar or similar source systems and every system writes similar code to connect to the kafka cluster. To avoid such situation, this API is provided that helps developers to reuse/configure instead of writing repeatable code.
+
+Kafka Connect Sink API – Similarly, this API sinks the data from Kafka into the target system.
+
+kafka consists of cluster, storage, log and so producer and consumer data. It is distributed store, receives and send records on different nodes that called *brokers*.  Brokers receive records from producers, assigns offsets to them, and commits them to storage. For this reason it needed ## Zookeeper.
 #### What Is Zookeeper:
 Zookeeper is a software project from the Apache Software Foundation that provides open source configuration services as well as synchronization services. Zookeeper Designed to build robust distributed systems so that programmers can meet their needs with a simple and understandable interface.
 #### Zookeeper is used for:
