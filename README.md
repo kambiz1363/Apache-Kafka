@@ -6,7 +6,7 @@ kafka consists of cluster, storage, log and so producer and consumer data. It is
 #### What Is Zookeeper:
 Zookeeper is a software project from the Apache Software Foundation that provides open source configuration services as well as synchronization services. Zookeeper Designed to build robust distributed systems so that programmers can meet their needs with a simple and understandable interface.
 * Zookeeper is used for:
-1. **collector ellection:
+1. ** collector ellection  ** :
 Zookeeper is the storage of the state of a Kafka cluster. It is used for the controller election either in the very beginning or when the current controller crashes. The controller is also responsible for telling other replicas to become partition leaders when the partition leader broker of a topic fails/crashes.
 
 ### How does it work?
