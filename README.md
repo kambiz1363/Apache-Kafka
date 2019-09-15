@@ -6,9 +6,12 @@ kafka consists of cluster, storage, log and so producer and consumer data. It is
 #### What Is Zookeeper:
 Zookeeper is a software project from the Apache Software Foundation that provides open source configuration services as well as synchronization services. Zookeeper Designed to build robust distributed systems so that programmers can meet their needs with a simple and understandable interface.
 * Zookeeper is used for:
-1. #### collector ellection :
+1. #### Collector ellection :
 Zookeeper is the storage of the state of a Kafka cluster. It is used for the controller election either in the very beginning or when the current controller crashes. The controller is also responsible for telling other replicas to become partition leaders when the partition leader broker of a topic fails/crashes.
-
+2. #### Configuration of Topics :
+which topics exist, how many partitions each has, where are the replicas, who is the preferred leader, what configuration overrides are set for each topic.
+3. #### Quotas and Access control list :
+How much data is each client allowed to read and write and Who is allowed to read and write to which topic.
 ### How does it work?
 Applications (*producers*) send messages (*records*) to a Kafka node (*broker*) and messages are processed by other applications called *consumers*. Messages get stored in a *topic* and consumers subscribe to the topic to receive new messages.
 A topic is a category or feed name to which records are published. Topics in Kafka are always multi-subscriber; that is, a topic can have zero, one, or many consumers that subscribe to the data written to it.
