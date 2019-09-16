@@ -53,5 +53,4 @@ Kafka does not keep track of what records are read by the consumer and delete th
 4. Kafka consumer metrics
 
 you must automatically discover and monitor Kafka servers and track resource utilization details, such as memory, CPU, and disk growth, over time; this will ensure that you don't run out of resources.
-#### threads and JVM usage
-Because it runs in the Java Virtual Machine (JVM), Kafka relies on Java garbage collection processes to free up memory. The more activity in your Kafka cluster, the more often the garbage collection will run.
+
