@@ -46,7 +46,7 @@ Kafka does not keep track of what records are read by the consumer and delete th
 >## Consumer Group Detail:
 > In Kafka, each topic is divided into a set of logs known as partitions. Producers write to the tail of these logs and consumers read the logs at their own pace. Kafka scales topic consumption by distributing partitions among a consumer group, which is a set of consumers sharing a common group identifier. The diagram below shows a single topic with three partitions and a consumer group with two members. Each partition in the topic is assigned to exactly one member in the group.
 
-![CG](https://user-images.githubusercontent.com/36330171/64948578-99de1400-d88c-11e9-81aa-8181d1b01742.png)
+> ![CG](https://user-images.githubusercontent.com/36330171/64948578-99de1400-d88c-11e9-81aa-8181d1b01742.png)
 While the old consumer depended on Zookeeper for group management, the new consumer uses a group coordination protocol built into Kafka itself. For each group, one of the brokers is selected as the group coordinator. The coordinator is responsible for managing the state of the group. Its main job is to mediate partition assignment when new members arrive, old members depart, and when topic metadata changes. The act of reassigning partitions is known as rebalancing the group.
 When a group is first initialized, the consumers typically begin reading from either the earliest or latest offset in each partition. The messages in each partition log are then read sequentially. As the consumer makes progress, it commits the offsets of messages it has successfully processed. For example, in the figure below, the consumer’s position is at offset 6 and its last committed offset is at offset 1.
 ## kafka Monitoring
