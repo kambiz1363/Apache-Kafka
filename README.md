@@ -4,14 +4,17 @@ It is generally used as a publish/subscribe messaging system, It allows us to pu
 ### kafka architecture
 Kafka has four core APIs:
 
-Producer API: This API enables the source or sender system to send data to the topics in Kafka cluster.
+##### Producer API:
+This API enables the source or sender system to send data to the topics in Kafka cluster.
+##### Consumer API:
+This API enables the receiving or consuming application to consume the data from Kafka cluster.
 
-Consumer API: This API enables the receiving or consuming application to consume the data from Kafka cluster.
+##### Streams API:
+This API enables transformation of incoming data; transformation may be simple mapping, filtering, aggregation etc.In Kafka a stream processor is anything that takes continual streams of data from input topics, performs some processing on this input, and produces continual streams of data to output topics.
+For example, a retail application might take in input streams of sales and shipments, and output a stream of reorders and price adjustments computed off this data.
 
-Streams API: This API enables transformation of incoming data; transformation may be simple mapping, filtering, aggregation etc.
-
-Connector API: allows building and running reusable producers or consumers that connect Kafka topics to existing applications or data systems. For example, a connector to a relational database might capture every change to a table.
-
+##### Connector API:
+allows building and running reusable producers or consumers that connect Kafka topics to existing applications or data systems. For example, a connector to a relational database might capture every change to a table.
 
 kafka consists of cluster, storage, log and so producer and consumer data. It is distributed store, receives and send records on different nodes that called *brokers*.  Brokers receive records from producers, assigns [offsets](https://github.com/kambiz1363/Apache-Kafka/blob/master/README.md#offset) to them, and commits them to storage. For this reason, it needed [Zookeeper](https://github.com/kambiz1363/Apache-Kafka/blob/master/README.md#what-is-zookeeper).
 
