@@ -65,6 +65,9 @@ Messaging traditionally has two models: queuing and publish-subscribe. In a queu
 ![SU](https://user-images.githubusercontent.com/36330171/64955244-f9dcb680-d89c-11e9-85a0-d6317778625c.png)
 
 The consumer group concept in Kafka generalizes these two concepts. As with a queue the consumer group allows you to divide up processing over a collection of processes (the members of the consumer group). As with publish-subscribe, Kafka allows you to broadcast messages to multiple consumer groups.
+##### Offline Data Load
+Scalable persistence allows for the possibility of consumers that only periodically consume such as batch data loads that periodically bulk-load data into an offline system such as Hadoop or a relational data warehouse.
+In the case of Hadoop we parallelize the data load by splitting the load over individual map tasks, one for each node/topic/partition combination, allowing full parallelism in the loading. Hadoop provides the task management, and tasks which fail can restart without danger of duplicate data—they simply restart from their original position.
 
 ## kafka Monitoring
  Kafka has grown considerably in terms of both volume and complexity, and being a crucial component in the IT infrastructure, it's necessary to implement a dedicated kafka monitor to track its operations and performance. Kafka monitoring tools like Applications Manager's Kafka monitoring tool collects all performance metrics that can help when troubleshooting Kafka issues, and it shows you which ones require corrective action.
