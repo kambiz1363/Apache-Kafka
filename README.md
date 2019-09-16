@@ -29,7 +29,7 @@ which topics exist, how many partitions each has, where are the replicas, who is
 
 ##### 3. Quotas and Access control list :
 How much data is each client allowed to read and write and Who is allowed to read and write to which topic.
-### How does it work?
+### How does it work(kafka)?
 Applications (*producers*) send messages (*records*) to a Kafka node (*broker*) and messages are processed by other applications called *consumers*. Messages get stored in a *topic* and consumers subscribe to the topic to receive new messages.
 A topic is a category or feed name to which records are published. Topics in Kafka are always multi-subscriber; that is, a topic can have zero, one, or many consumers that subscribe to the data written to it.
 
