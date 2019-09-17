@@ -94,5 +94,6 @@ Apache Kafka disables remote JMX by default. You can enable remote monitoring us
 The following metrics are available on producer/consumer/connector/streams instances. For specific metrics, please see following example:
 
 ![monitoring](https://user-images.githubusercontent.com/36330171/65037056-1b53a600-d962-11e9-8e82-4b0dafb89d87.png)
+
 You must automatically discover and monitor Kafka servers and track resource utilization details, such as memory, CPU, and disk growth, over time; this will ensure that you don't run out of resources.
 
