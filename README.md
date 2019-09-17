@@ -92,6 +92,6 @@ All Kafka rate metrics have a corresponding cumulative count metric with suffix 
 Apache Kafka disables remote JMX by default. You can enable remote monitoring using JMX by setting the environment variable JMX_PORT for processes started using the CLI or standard Java system properties to enable remote JMX programmatically. You must enable security when enabling remote JMX in production scenarios to ensure that unauthorized users cannot monitor or control your broker or application as well as the platform on which these are running. Note that authentication is disabled for JMX by default in Kafka and security configs must be overridden for production deployments by setting the environment variable ```KAFKA_JMX_OPTS``` for processes started using the CLI or by setting appropriate Java system properties.
 ##### Common monitoring metrics for producer/consumer/connect/streams example:
 The following metrics are available on producer/consumer/connector/streams instances. For specific metrics, please see following example:
-
+![monitoring](https://user-images.githubusercontent.com/36330171/65037056-1b53a600-d962-11e9-8e82-4b0dafb89d87.png)
 you must automatically discover and monitor Kafka servers and track resource utilization details, such as memory, CPU, and disk growth, over time; this will ensure that you don't run out of resources.
 
