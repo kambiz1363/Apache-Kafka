@@ -64,6 +64,9 @@ When a group is first initialized, the consumers typically begin reading from ei
 When a partition gets reassigned to another consumer in the group, the initial position is set to the last committed offset. If the consumer in the example above suddenly crashed, then the group member taking over the partition would begin consumption from offset 1. In that case, it would have to reprocess the messages up to the crashed consumer’s position of 6.
 The diagram also shows two other significant positions in the log. The log end offset is the offset of the last message written to the log. The high watermark is the offset of the last message that was successfully copied to all of the log’s replicas. From the perspective of the consumer, the main thing to know is that you can only read up to the high watermark. This prevents the consumer from reading unreplicated data which could later be lost.
 ### More concepts
+#### Kafka Storage Internals
+Data in Kafka is stored in topics and Topics are partitioned. Each partition is further divided into segments and Each segment has a log file to store the actual message and an index file to store the position of the messages in the log file.
+Various partitions of a topic can be on different brokers but a partition is always tied to a single broker. Replicated partitions are passive. You can consume messages from them only when the leader is down
 #### Multi-tenancy
 You can deploy Kafka as a multi-tenant solution. Multi-tenancy is enabled by configuring which topics can produce or consume data. There is also operations support for quotas. Administrators can define and enforce quotas on requests to control the broker resources that are used by clients.
 #### Kafka as a Messaging System
