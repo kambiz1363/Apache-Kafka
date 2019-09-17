@@ -80,15 +80,13 @@ In the case of Hadoop we parallelize the data load by splitting the load over in
 
 ## kafka Monitoring
  Kafka has grown considerably in terms of both volume and complexity, and being a crucial component in the IT infrastructure, it's necessary to implement a dedicated kafka monitor to track its operations and performance. Kafka monitoring tools like Applications Manager's Kafka monitoring tool collects all performance metrics that can help when troubleshooting Kafka issues, and it shows you which ones require corrective action.
-Kafka uses Yammer Metrics for metrics reporting in the server. The Java clients use Kafka Metrics, a built-in metrics registry that minimizes transitive dependencies pulled into client applications. Both expose metrics via JMX and can be configured to report stats using pluggable stats reporters to hook up to your monitoring system.
-All Kafka rate metrics have a corresponding cumulative count metric with suffix ```-total```. For example, ```records-consumed-rate``` has a corresponding metric named ```records-consumed-total```.
-
 The easiest way to see the available metrics is to fire up jconsole and point it at a running kafka client or server; this will allow browsing all metrics with JMX.
  #### Important Kafka performance metrics to look for while performing Kafka monitoring include:
 1. Resource utilization metrics
 2. Kafka broker metrics
 3. Kafka producer metrics
 4. Kafka consumer metrics
-
+Kafka uses Yammer Metrics for metrics reporting in the server. The Java clients use Kafka Metrics, a built-in metrics registry that minimizes transitive dependencies pulled into client applications. Both expose metrics via JMX and can be configured to report stats using pluggable stats reporters to hook up to your monitoring system.
+All Kafka rate metrics have a corresponding cumulative count metric with suffix ```-total```. For example, ```records-consumed-rate``` has a corresponding metric named ```records-consumed-total```.
 you must automatically discover and monitor Kafka servers and track resource utilization details, such as memory, CPU, and disk growth, over time; this will ensure that you don't run out of resources.
 
