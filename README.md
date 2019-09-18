@@ -181,3 +181,8 @@ The following metrics are available on producer/consumer/connector/streams insta
 
 You must automatically discover and monitor Kafka servers and track resource utilization details, such as memory, CPU, and disk growth, over time; this will ensure that you don't run out of resources.
 
+-------------
+Resources
+[medium.com](https://medium.com/@durgaswaroop/a-practical-introduction-to-kafka-storage-internals-d5b544f6925f)web site
+[blog.cloudera](https://blog.cloudera.com/scalability-of-kafka-messaging-using-consumer-groups)
+
