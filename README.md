@@ -12,7 +12,7 @@ This API enables the receiving or consuming application to consume the data from
 * **Streams API**: 3
 This API enables transformation of incoming data; transformation may be simple mapping, filtering, aggregation etc.In Kafka a stream processor is anything that takes continual streams of data from input topics, performs some processing on this input, and produces continual streams of data to output topics.
 For example, a retail application might take in input streams of sales and shipments, and output a stream of reorders and price adjustments computed off this data.
-* **details about Stream Processing**: 3a
+ * details about Stream Processing: 3a
 In Kafka a stream processor is anything that takes continual streams of data from input topics, performs some processing on this input, and produces continual streams of data to output topics.
 For example, a retail application might take in input streams of sales and shipments, and output a stream of reorders and price adjustments computed off this data.
 It is possible to do simple processing directly using the producer and consumer APIs. However for more complex transformations Kafka provides a fully integrated Streams API. This allows building applications that do non-trivial processing that compute aggregations off of streams or join streams together.
