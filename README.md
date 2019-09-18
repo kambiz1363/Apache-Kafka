@@ -1,6 +1,6 @@
 # Apache-Kafka
 ### What Is Kafka?
-It is generally used as a publish/subscribe messaging system, It allows us to publish and subscribe to a stream of records that can be categorized. Kafka is written in Java. It is often used in real-time streaming data architectures to provide real-time analytics.<p> Since Kafka is a fast, scalable, cluster, durable, [storage](https://github.com/kambiz1363/Apache-Kafka/blob/master/README.md#kafka-storage-internals) and *fault-tolerant publish-subscribe messaging system*.</p>
+It is generally used as a publish/subscribe messaging system, It allows us to publish and subscribe to a stream of records that can be categorized. Kafka is written in Java. It is often used in real-time streaming data architectures to provide real-time analytics.<p> Since Kafka is a fast, scalable, cluster, durable, [storage](https://github.com/kambiz1363/Apache-Kafka/blob/master/README.md#kafka-storage-internals) and *fault-tolerant publish-subscribe messaging system*.It is distributed store, receives and send records on different nodes that called *brokers*.  Brokers receive records from producers, assigns [offsets](https://github.com/kambiz1363/Apache-Kafka/blob/master/README.md#offset) to them, and commits them to storage. For this reason, it needed [Zookeeper](https://github.com/kambiz1363/Apache-Kafka/blob/master/README.md#what-is-zookeeper). </p>
 ### kafka architecture
 Kafka has four core APIs:
 
@@ -21,9 +21,6 @@ The streams API builds on the core primitives Kafka provides: it uses the produc
 
 * **Connector API**: 
 allows building and running reusable producers or consumers that connect Kafka topics to existing applications or data systems. For example, a connector to a relational database might capture every change to a table.
-
------------------------------
-kafka consists of cluster, storage, log and so producer and consumer data. It is distributed store, receives and send records on different nodes that called *brokers*.  Brokers receive records from producers, assigns [offsets](https://github.com/kambiz1363/Apache-Kafka/blob/master/README.md#offset) to them, and commits them to storage. For this reason, it needed [Zookeeper](https://github.com/kambiz1363/Apache-Kafka/blob/master/README.md#what-is-zookeeper).
 
 ##### offset:
 Each partition is an ordered, immutable sequence of records that is continually appended to a structured commit log. The records in the partitions are each assigned a sequential id number called the offset that uniquely identifies each record within the partition.
