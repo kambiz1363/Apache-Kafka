@@ -71,7 +71,7 @@ Various partitions of a topic can be on different brokers but a partition is alw
 With the basic stuff out of our way, let’s understand these concepts better by working with Kafka.
 I am going to start by creating a topic in Kafka with three partitions. If you want to follow along, the command looks like this for a local Kafka setup on Ubuntu
 ```
-bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 3 --topic FirstTopic
+$ bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 3 --topic FirstTopic
 ```
 If I go into Kafka’s log directory, I see three directories created as follows.
 ```
