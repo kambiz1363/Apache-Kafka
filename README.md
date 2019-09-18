@@ -4,9 +4,9 @@ It is generally used as a publish/subscribe messaging system, It allows us to pu
 ### kafka architecture
 Kafka has four core APIs:
 
-##### Producer API:
+* Producer API: 1
 This API enables the source or sender system to send data to the topics in Kafka cluster.
-##### Consumer API:
+* Consumer API: 2
 This API enables the receiving or consuming application to consume the data from Kafka cluster.
 
 ##### Streams API:
