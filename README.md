@@ -64,7 +64,7 @@ When a group is first initialized, the consumers typically begin reading from ei
 ![CG1](https://user-images.githubusercontent.com/36330171/64948955-651e8c80-d88d-11e9-932c-fb928da350f2.png)
 When a partition gets reassigned to another consumer in the group, the initial position is set to the last committed offset. If the consumer in the example above suddenly crashed, then the group member taking over the partition would begin consumption from offset 1. In that case, it would have to reprocess the messages up to the crashed consumer’s position of 6.
 The diagram also shows two other significant positions in the log. The log end offset is the offset of the last message written to the log. The high watermark is the offset of the last message that was successfully copied to all of the log’s replicas. From the perspective of the consumer, the main thing to know is that you can only read up to the high watermark. This prevents the consumer from reading unreplicated data which could later be lost.
-### More concepts
+## More concepts
 #### Kafka Storage Internals
 Data in Kafka is stored in *topics* and topics are *partitioned*. Each partition is further divided into *segments* and Each segment has a log file to store the actual message and an index file to store the position of the messages in the log file.
 Various partitions of a topic can be on different brokers but a partition is always tied to a single broker.
@@ -94,6 +94,59 @@ FirstTopic-2
 
 0 directories, 12 files
 ```
+We have three directories created because we’ve given three partitions for our topic, which means that each partition gets a directory on the file system. You also see some files like index, log etc.
+One more thing that you should be able to see from here is that in Kafka, the topic is more of a logical grouping than anything else and that the Partition is the actual unit of storage in Kafka. That is what is physically stored on the disk. Let’s understand partitions in some more detail.
+##### Partitions
+A partition, in theory, can be described as an immutable collection (or sequence) of messages. Produser can only append messages to a partition but cannot delete from it. Now we’ll send some messages into the topic.
+$ ls -lash FirstTopic-0
+total 12K
+4.0K drwxr-xr-x 2 kafka kafka 4.0K Sep 18 04:49 .
+4.0K drwxr-xr-x 5 kafka kafka 4.0K Sep 18 04:54 ..
+   0 -rw-r--r-- 1 kafka kafka  10M Sep 18 04:49 00000000000000000000.index
+   0 -rw-r--r-- 1 kafka kafka    0 Sep 18 04:49 00000000000000000000.log
+   0 -rw-r--r-- 1 kafka kafka  10M Sep 18 04:49 00000000000000000000.timeindex
+4.0K -rw-r--r-- 1 kafka kafka    8 Sep 18 04:49 leader-epoch-checkpoint
+You see the index files combined are about 20M in size while the log file is completely empty. This is the same case with FirstTopic-1 and First-Topic-2 folders. Now let us send a couple of messages and see what happens. To send the messages I’m using the console producer as follows:
+```
+$ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic FirstTopic
+```
+I have sent two messages, first a customary "hello world" and "amazon"
+```
+$ ls -lash FirstTopic-*
+FirstTopic-0:
+total 12K
+4.0K drwxr-xr-x 2 kafka kafka 4.0K Sep 18 05:05 .
+4.0K drwxr-xr-x 5 kafka kafka 4.0K Sep 18 05:10 ..
+   0 -rw-r--r-- 1 kafka kafka  10M Sep 18 05:05 00000000000000000000.index
+   0 -rw-r--r-- 1 kafka kafka    0 Sep 18 05:05 00000000000000000000.log
+   0 -rw-r--r-- 1 kafka kafka  10M Sep 18 05:05 00000000000000000000.timeindex
+4.0K -rw-r--r-- 1 kafka kafka    8 Sep 18 05:05 leader-epoch-checkpoint
+
+FirstTopic-1:
+total 16K
+4.0K drwxr-xr-x 2 kafka kafka 4.0K Sep 18 05:05 .
+4.0K drwxr-xr-x 5 kafka kafka 4.0K Sep 18 05:10 ..
+   0 -rw-r--r-- 1 kafka kafka  10M Sep 18 05:05 00000000000000000000.index
+4.0K -rw-r--r-- 1 kafka kafka   79 Sep 18 05:08 00000000000000000000.log
+   0 -rw-r--r-- 1 kafka kafka  10M Sep 18 05:05 00000000000000000000.timeindex
+4.0K -rw-r--r-- 1 kafka kafka    8 Sep 18 05:05 leader-epoch-checkpoint
+
+FirstTopic-2:
+total 16K
+4.0K drwxr-xr-x 2 kafka kafka 4.0K Sep 18 05:05 .
+4.0K drwxr-xr-x 5 kafka kafka 4.0K Sep 18 05:10 ..
+   0 -rw-r--r-- 1 kafka kafka  10M Sep 18 05:05 00000000000000000000.index
+4.0K -rw-r--r-- 1 kafka kafka   74 Sep 18 05:09 00000000000000000000.log
+   0 -rw-r--r-- 1 kafka kafka  10M Sep 18 05:05 00000000000000000000.timeindex
+4.0K -rw-r--r-- 1 kafka kafka    8 Sep 18 05:05 leader-epoch-checkpoint
+```
+Out two messages went into two of the partitions where you can see that the log files have a non zero size. This is because the messages in the partition are stored in the ‘xxxx.log’ file. To confirm that the messages are indeed stored in the log file, we can just see what’s inside that log file.
+```
+$ cat FirstTopic-1/*.log
+CbZ�%mBőKmBőK��������������"hello world
+```
+The file format of the ‘log’ file is not one that is conducive for textual representation but nevertheless, you should see the ‘Hello World’ at the end indicating that this file got updated when we have sent the message into the topic. The second message we have sent went into the other partition.
+Notice that the first message we sent, went into the third partition (FirstTopic-1) and the second message went into the second partition (FirstTopic-2). This is because Kafka arbitrarily picks the partition for the first message and then distributes the messages to partitions in a round robin fashion. If a third message comes now, it would go into FirstTopic-0 and this order of partition continues for any new message that comes in. We can also make Kafka choose the same partition for our messages by adding a key to the message. Kafka stores all the messages with the same key into a single partition.
 #### Multi-tenancy
 You can deploy Kafka as a multi-tenant solution. Multi-tenancy is enabled by configuring which topics can produce or consume data. There is also operations support for quotas. Administrators can define and enforce quotas on requests to control the broker resources that are used by clients.
 #### Kafka as a Messaging System
