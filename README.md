@@ -149,7 +149,7 @@ CbZ�%mBőKmBőK��������������"hello world
 ```
 The file format of the ‘log’ file is not one that is conducive for textual representation but nevertheless, you should see the ‘Hello World’ at the end indicating that this file got updated when we have sent the message into the topic. The second message we have sent went into the other partition.
 Notice that the first message we sent, went into the third partition (FirstTopic-1) and the second message went into the second partition (FirstTopic-2). This is because Kafka arbitrarily picks the partition for the first message and then distributes the messages to partitions in a round robin fashion. If a third message comes now, it would go into FirstTopic-0 and this order of partition continues for any new message that comes in. We can also make Kafka choose the same partition for our messages by adding a key to the message. Kafka stores all the messages with the same key into a single partition.
-Each new message in the partition gets an Id which is one more than the previous Id number. This Id number is also called as the *Offset*. So, the first message is at ‘offset’ 0, the second message is at offset 1 and so on. These offset Id’s are always incremented from the previous value.
+Each new message in the partition gets an Id which is one more than the previous Id number. This Id number is also called as the [Offset](https://github.com/kambiz1363/Apache-Kafka/blob/master/README.md#offset). So, the first message is at ‘offset’ 0, the second message is at offset 1 and so on. These offset Id’s are always incremented from the previous value.
 ![Offset](https://user-images.githubusercontent.com/36330171/65115853-81d9d200-d9fd-11e9-8d6d-35de7738fb66.png)
 
 #### Multi-tenancy
