@@ -68,6 +68,32 @@ The diagram also shows two other significant positions in the log. The log end o
 #### Kafka Storage Internals
 Data in Kafka is stored in *topics* and topics are *partitioned*. Each partition is further divided into *segments* and Each segment has a log file to store the actual message and an index file to store the position of the messages in the log file.
 Various partitions of a topic can be on different brokers but a partition is always tied to a single broker.
+> With the basic stuff out of our way, let’s understand these concepts better by working with Kafka.
+I am going to start by creating a topic in Kafka with three partitions. If you want to follow along, the command looks like this for a local Kafka setup on Ubuntu
+```
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 3 --topic FirstTopic
+```
+If I go into Kafka’s log directory, I see three directories created as follows.
+```
+$ tree FirstTopic-*
+FirstTopic-0
+├── 00000000000000000000.index
+├── 00000000000000000000.log
+├── 00000000000000000000.timeindex
+└── leader-epoch-checkpoint
+FirstTopic-1
+├── 00000000000000000000.index
+├── 00000000000000000000.log
+├── 00000000000000000000.timeindex
+└── leader-epoch-checkpoint
+FirstTopic-2
+├── 00000000000000000000.index
+├── 00000000000000000000.log
+├── 00000000000000000000.timeindex
+└── leader-epoch-checkpoint
+
+0 directories, 12 files
+```
 #### Multi-tenancy
 You can deploy Kafka as a multi-tenant solution. Multi-tenancy is enabled by configuring which topics can produce or consume data. There is also operations support for quotas. Administrators can define and enforce quotas on requests to control the broker resources that are used by clients.
 #### Kafka as a Messaging System
