@@ -4,12 +4,12 @@ It is generally used as a publish/subscribe messaging system, It allows us to pu
 ### kafka architecture
 Kafka has four core APIs:
 
-* **Producer API**: 1
+* **Producer API**: 
 This API enables the source or sender system to send data to the topics in Kafka cluster.
-* **Consumer API**: 2
+* **Consumer API**: 
 This API enables the receiving or consuming application to consume the data from Kafka cluster.
 
-* **Streams API**: 3
+* **Streams API**: 
 This API enables transformation of incoming data; transformation may be simple mapping, filtering, aggregation etc.In Kafka a stream processor is anything that takes continual streams of data from input topics, performs some processing on this input, and produces continual streams of data to output topics.
 For example, a retail application might take in input streams of sales and shipments, and output a stream of reorders and price adjustments computed off this data.
  * details about Stream Processing: 3a
@@ -19,7 +19,7 @@ It is possible to do simple processing directly using the producer and consumer 
 This facility helps solve the hard problems this type of application faces: handling out-of-order data, reprocessing input as code changes, performing stateful computations, etc.
 The streams API builds on the core primitives Kafka provides: it uses the producer and consumer APIs for input, uses Kafka for stateful storage, and uses the same group mechanism for fault tolerance among the stream processor instances.
 
-* Connector API: 4
+* **Connector API**: 
 allows building and running reusable producers or consumers that connect Kafka topics to existing applications or data systems. For example, a connector to a relational database might capture every change to a table.
 
 -----------------------------
