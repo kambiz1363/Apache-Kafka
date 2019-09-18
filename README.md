@@ -98,6 +98,7 @@ We have three directories created because we’ve given three partitions for our
 One more thing that you should be able to see from here is that in Kafka, the topic is more of a logical grouping than anything else and that the Partition is the actual unit of storage in Kafka. That is what is physically stored on the disk. Let’s understand partitions in some more detail.
 ##### Partitions
 A partition, in theory, can be described as an immutable collection (or sequence) of messages. Produser can only append messages to a partition but cannot delete from it. Now we’ll send some messages into the topic.
+```
 $ ls -lash FirstTopic-0
 total 12K
 4.0K drwxr-xr-x 2 kafka kafka 4.0K Sep 18 04:49 .
@@ -106,6 +107,7 @@ total 12K
    0 -rw-r--r-- 1 kafka kafka    0 Sep 18 04:49 00000000000000000000.log
    0 -rw-r--r-- 1 kafka kafka  10M Sep 18 04:49 00000000000000000000.timeindex
 4.0K -rw-r--r-- 1 kafka kafka    8 Sep 18 04:49 leader-epoch-checkpoint
+```
 You see the index files combined are about 20M in size while the log file is completely empty. This is the same case with FirstTopic-1 and First-Topic-2 folders. Now let us send a couple of messages and see what happens. To send the messages I’m using the console producer as follows:
 ```
 $ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic FirstTopic
