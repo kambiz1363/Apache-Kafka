@@ -21,8 +21,6 @@ The streams API builds on the core primitives Kafka provides: it uses the produc
 * **Connector API**: 
 allows building and running reusable producers or consumers that connect Kafka topics to existing applications or data systems. For example, a connector to a relational database might capture every change to a table.
 
-Each partition is an ordered, immutable sequence of records that is continually appended to a structured commit log. The records in the partitions are each assigned a sequential id number called the offset that uniquely identifies each record within the partition.
-
 ### What Is Zookeeper:
 Zookeeper is a software project from the Apache Software Foundation that provides open source configuration services as well as synchronization services. Zookeeper Designed to build robust distributed systems so that programmers can meet their needs with a simple and understandable interface.
 #### Zookeeper is used for:
@@ -60,8 +58,9 @@ When a group is first initialized, the consumers typically begin reading from ei
 
 When a partition gets reassigned to another consumer in the group, the initial position is set to the last committed offset. If the consumer in the example above suddenly crashed, then the group member taking over the partition would begin consumption from offset 1. In that case, it would have to reprocess the messages up to the crashed consumer’s position of 6.
 The diagram also shows two other significant positions in the log. The log end offset is the offset of the last message written to the log. The high watermark is the offset of the last message that was successfully copied to all of the log’s replicas. From the perspective of the consumer, the main thing to know is that you can only read up to the high watermark. This prevents the consumer from reading unreplicated data which could later be lost.
-## More concepts
+## More concepts and details
 #### offset:
+Each partition is an ordered, immutable sequence of records that is continually appended to a structured commit log. The records in the partitions are each assigned a sequential id number called the offset that uniquely identifies each record within the partition.
 #### Kafka Storage Internals
 Data in Kafka is stored in *topics* and topics are *partitioned*. Each partition is further divided into *segments* and Each segment has a log file to store the actual message and an index file to store the position of the messages in the log file.
 Various partitions of a topic can be on different brokers but a partition is always tied to a single broker.
