@@ -221,3 +221,4 @@ Resources
 * [Introducing the Kafka Consumer](https://www.confluent.io/blog/tutorial-getting-started-with-the-new-apache-kafka-0-9-consumer-client/)
 * [Intro To Streams](https://kafka.apache.org/documentation/streams/)
 * [zookeeper website](https://zookeeper.apache.org/)
+* [What is Apache Zookeeper](https://intellipaat.com/blog/what-is-apache-zookeeper/)
