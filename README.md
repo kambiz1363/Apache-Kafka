@@ -34,7 +34,17 @@ allows building and running reusable producers or consumers that connect Kafka t
 
 ### What Is Zookeeper:
 Zookeeper is a software project from the Apache Software Foundation that provides open source configuration services as well as synchronization services. Zookeeper Designed to build robust distributed systems so that programmers can meet their needs with a simple and understandable interface.
-#### Zookeeper is used for:
+#### ZooKeeper Architecture
+Apache ZooKeeper works on the Client–Server architecture in which clients are machine nodes and servers are nodes.
+The following figure shows the relationship between the servers and their clients. In this, we can see that each client sources the client library, and further they communicate with any of the ZooKeeper nodes.
+Components of the ZooKeeper architecture has been explained in the following
+| Part  | Description |
+| ------------- | ------------- |
+| Client  | 	Client node in our distributed applications cluster is used to access information from the server. It sends a message to the server to let the server know that the client is alive, and if there is no response from the connected server the client automatically resends the message to another server. |
+| Server  | The server gives an acknowledgement to the client to inform that the server is alive, and it provides all services to clients. |
+| Leader  | If any of the server nodes is failed, this server node performs automatic recovery. |
+| Follower  | 	It is a server node which follows the instructions given by the leader. |
+#### Zookeeper is used for(in kafka):
 ##### 1. Collector ellection :
 Zookeeper is the storage of the state of a Kafka cluster. It is used for the controller election either in the very beginning or when the current controller crashes. The controller is also responsible for telling other replicas to become partition leaders when the partition leader broker of a topic fails/crashes.
 
