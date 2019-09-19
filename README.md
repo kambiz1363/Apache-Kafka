@@ -184,7 +184,7 @@ You must automatically discover and monitor Kafka servers and track resource uti
 -------------
 Resources
 * [kafka website](https://kafka.apache.org)
-* [medium](https://medium.com/@durgaswaroop/a-practical-introduction-to-kafka-storage-internals-d5b544f6925f) website
+* [medium.com - A Practical Introduction to Kafka Storage Internals](https://medium.com/@durgaswaroop/a-practical-introduction-to-kafka-storage-internals-d5b544f6925f) website
 * [blog.cloudera](https://blog.cloudera.com/scalability-of-kafka-messaging-using-consumer-groups)
 * [confluent.io](https://www.confluent.io/blog/tutorial-getting-started-with-the-new-apache-kafka-0-9-consumer-client/)
 * [zookeeper.apache](https://zookeeper.apache.org/)
