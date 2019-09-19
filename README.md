@@ -46,6 +46,13 @@ Components of the ZooKeeper architecture has been explained in the following
 | Leader  | If any of the server nodes is failed, this server node performs automatic recovery. |
 | Follower  | 	It is a server node which follows the instructions given by the leader. |
 
+#### Working of Apache ZooKeeper
+* The first thing that happens as soon as the ensemble (a group of ZooKeeper servers) starts is, it waits for the clients to connect to the servers.
+* After that, the clients in the ZooKeeper ensemble will connect to one of the nodes. That node can be any of a leader node or a follower node.
+* Once the client is connected to a particular node, the node assigns a session ID to the client and sends an acknowledgement to that particular client.
+* If the client does not get any acknowledgement from the node, then it resends the message to another node in the ZooKeeper ensemble and tries to connect with it.
+* On receiving the acknowledgement, the client makes sure that the connection is not lost by sending the heartbeats to the node at regular intervals.
+* Finally, the client can perform functions like read, write, or store the data as per the need.
 #### Zookeeper is used for(in kafka):
 ##### 1. Collector ellection :
 Zookeeper is the storage of the state of a Kafka cluster. It is used for the controller election either in the very beginning or when the current controller crashes. The controller is also responsible for telling other replicas to become partition leaders when the partition leader broker of a topic fails/crashes.
