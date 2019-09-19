@@ -1,6 +1,17 @@
 # Apache-Kafka
 ### What Is Kafka?
 It is generally used as a publish/subscribe messaging system, It allows us to publish and subscribe to a stream of records that can be categorized. Kafka is written in Java. It is often used in real-time streaming data architectures to provide real-time analytics.<p> Since Kafka is a fast, scalable, cluster, durable, [storage](https://github.com/kambiz1363/Apache-Kafka/blob/master/README.md#kafka-storage-internals) and *fault-tolerant publish-subscribe messaging system*.It is distributed store, receives and send records on different nodes that called *brokers*.  Brokers receive records from producers, assigns [offsets](https://github.com/kambiz1363/Apache-Kafka/blob/master/README.md#offset) to them, and commits them to storage. For this reason, it needed [Zookeeper](https://github.com/kambiz1363/Apache-Kafka/blob/master/README.md#what-is-zookeeper). </p>
+### Where to use Apache Kafka?
+Kafka allows you to build real-time streaming data pipelines. One can use Kafka to generate matrix, log aggregation, messaging, audit trail and much more. We live in a world where data and data analytics is a big deal but real time analytics is even bigger and Kafka comes in play there.
+#### Few of Apache Kafka use cases:
+* Stream Processing
+* Website Activity Tracking
+* Log Aggregation
+* Metrics Collection and Monitoring
+* Network monitoring
+* Internet of Things
+* Advertising
+* Fraud Detection
 ### kafka architecture
 Kafka has four core APIs:
 
@@ -179,8 +190,8 @@ The following metrics are available on producer/consumer/connector/streams insta
 
 You must automatically discover and monitor Kafka servers and track resource utilization details, such as memory, CPU, and disk growth, over time; this will ensure that you don't run out of resources.
 
-#### Summary
-At this point, we have installed, configured, and tested Kafka on a Ubuntu 16.04 server. You can adapt the setup to make use of it in your production environment. To learn more about how to install Kafka [check out the this link](https://github.com/kambiz1363/Install-Apache-Kafka-on-Ubuntu).
+#### Also
+ To learn more about how to install Kafka [check out the this link](https://github.com/kambiz1363/Install-Apache-Kafka-on-Ubuntu).
 
 
 -------------
