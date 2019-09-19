@@ -179,6 +179,10 @@ The following metrics are available on producer/consumer/connector/streams insta
 
 You must automatically discover and monitor Kafka servers and track resource utilization details, such as memory, CPU, and disk growth, over time; this will ensure that you don't run out of resources.
 
+#### Summary
+At this point, we have installed, configured, and tested Kafka on a Ubuntu 16.04 server. You can adapt the setup to make use of it in your production environment. To learn more about how to install Kafka [check out the this link](https://github.com/kambiz1363/Install-Apache-Kafka-on-Ubuntu).
+
+
 -------------
 Resources
 * [kafka website](https://kafka.apache.org)
