@@ -212,7 +212,7 @@ You must automatically discover and monitor Kafka servers and track resource uti
 #### Also
  To learn more about how to install Kafka [check out the this link](https://github.com/kambiz1363/Install-Apache-Kafka-on-Ubuntu).
 
-#####Resources
+##### Resources
 -
 * [kafka website](https://kafka.apache.org)
 * [A Practical Introduction to Kafka Storage Internals](https://medium.com/@durgaswaroop/a-practical-introduction-to-kafka-storage-internals-d5b544f6925f)
