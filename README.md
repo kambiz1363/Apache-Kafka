@@ -214,7 +214,7 @@ You must automatically discover and monitor Kafka servers and track resource uti
 
 
 ##### Resources
---
+---
 * [kafka website](https://kafka.apache.org)
 * [A Practical Introduction to Kafka Storage Internals](https://medium.com/@durgaswaroop/a-practical-introduction-to-kafka-storage-internals-d5b544f6925f)
 * [Scalability of Kafka Messaging using Consumer Groups](https://blog.cloudera.com/scalability-of-kafka-messaging-using-consumer-groups)
